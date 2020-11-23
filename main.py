@@ -35,14 +35,16 @@ def predict(matrix, w, v):
         print(vector)
         aMatrix = np.concatenate((matrix, vector), 1)
         print(aMatrix)
-        print(matrix.transpose())
+        v = np.rot90(v)
+        #matrix = np.rot90(matrix)
         # reshape v so that each vector is correct.
         x = np.linalg.solve(matrix, vector)
+        print(x)
         x1 = v[0]
         x2 = v[1]
         print(x1,x2)
-        print("{} * ({}^{} * {})".format(x[0][0], w[0], p, v[0]))
-        prediction = x[0][0]*(pow(w[0], p) * v[0]) + x[1][0]*(pow(w[1], p) * v[1])
+        print("{} * ({}^{} * {})".format(x[0][0], w[0], p, v[1]))
+        prediction = x[0][0]*(pow(w[0], p) * v[1]) + x[1][0]*(pow(w[1], p) * v[0])
         print("In {0} years there will be {1}".format(p, prediction))
 
 
