@@ -40,7 +40,7 @@ def predict(matrix, w, v):
         #matrix = np.rot90(matrix)
         # reshape v so that each vector is correct.
         x = LA.solve(vRot, vector)
-        print("Solves to: ".format(x))
+        #print("Solves to: ".format(x))
         #x1 = v[0]
         #x2 = v[1]
         #print("The linear combination is: {} * ({}^{} * {}) + {}({}^{} + {})".format(x[0][0], w[0], p, vRot[1], x[1][0], w[1], p, vRot[0]))
@@ -53,10 +53,10 @@ def predict(matrix, w, v):
         
         pred = []
         s = 0
-        for i in range(p+1):
-            #print("{} * ({}^{} * {}".format(x[i][0], w[i], p, vRot[p-i]))
-            #print(i)
-            part = x[i][0]*(pow(w[i], p) * vRot[p-i])
+        for i in range(R):
+            print("{} * ({}^{} * {}".format(x[i][0], w[i], p, vRot[(R-1)-i]))
+            print(i)
+            part = x[i][0]*(pow(w[i], p) * vRot[(R-1)-i])
             pred.append(part)
             for j in range(len(part)):
                 s += part[j]
