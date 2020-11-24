@@ -13,13 +13,13 @@ def getMatrix():
 
     # For printing the matrix
     matrix = np.array(entries).reshape(R, C)
-    print(matrix)
+    print("You entered:".format(matrix))
     return matrix
 
 
 def getEig(matrix):
     w, v = LA.eig(matrix)
-    print(w.real, '\n', v)
+    print("Eigen Values: {} '\n' Eigen Vectors: {}".format(w.real, v))
     return w.real, v
 
 
@@ -32,20 +32,36 @@ def predict(matrix, w, v):
         # single line separated by space
         entries = list(map(float, input().split()))
         vector = np.array(entries).reshape(R, 1)
-        print(vector)
+        print("You entered:".format(vector))
         aMatrix = np.concatenate((matrix, vector), 1)
-        print(aMatrix)
-        v = np.rot90(v)
+        print("Your augmented matrix is: ".format(aMatrix))
+        vector = np.flipud(vector)
+        vRot = np.rot90(v)
         #matrix = np.rot90(matrix)
         # reshape v so that each vector is correct.
-        x = np.linalg.solve(matrix, vector)
-        print(x)
-        x1 = v[0]
-        x2 = v[1]
-        print(x1,x2)
-        print("{} * ({}^{} * {})".format(x[0][0], w[0], p, v[1]))
-        prediction = x[0][0]*(pow(w[0], p) * v[1]) + x[1][0]*(pow(w[1], p) * v[0])
-        print("In {0} years there will be {1}".format(p, prediction))
+        x = LA.solve(vRot, vector)
+        print("Solves to: ".format(x))
+        #x1 = v[0]
+        #x2 = v[1]
+        #print("The linear combination is: {} * ({}^{} * {}) + {}({}^{} + {})".format(x[0][0], w[0], p, vRot[1], x[1][0], w[1], p, vRot[0]))
+        #prediction = x[0][0]*(pow(w[0], p) * vRot[1]) + x[1][0]*(pow(w[1], p) * vRot[0])
+        #print("In {0} years there will be {1}".format(p, prediction))
+        #s = 0
+        #for i in range(len(prediction)):
+        #    s += prediction[i]
+        #print("Or {} total".format(s))
+        
+        pred = []
+        s = 0
+        for i in range(p+1):
+            #print("{} * ({}^{} * {}".format(x[i][0], w[i], p, vRot[p-i]))
+            #print(i)
+            part = x[i][0]*(pow(w[i], p) * vRot[p-i])
+            pred.append(part)
+            for j in range(len(part)):
+                s += part[j]
+        print("In {0} years there will be the sum of {1}, or {2} total".format(p, pred, s))
+        
 
 
 if __name__ == '__main__':
