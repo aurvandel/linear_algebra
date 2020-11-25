@@ -2,8 +2,7 @@ import numpy as np
 import scipy.linalg as LA
 
 def getMatrix():
-    R = int(input("Enter the number of rows: "))
-    C = int(input("Enter the number of columns: "))
+    R = int(input("Enter the number of rows\columns of a square matrix: "))
 
     print("Enter the entries in a single line (separated by space): ")
 
@@ -12,9 +11,9 @@ def getMatrix():
     entries = list(map(float, input().split()))
 
     # For printing the matrix
-    matrix = np.array(entries).reshape(R, C)
+    matrix = np.array(entries).reshape(R, R)
     print("You entered:\n {}".format(matrix))
-    return matrix
+    return matrix, R
 
 
 def getEig(matrix):
@@ -23,11 +22,10 @@ def getEig(matrix):
     return w.real, v
 
 
-def predict(matrix, w, v):
+def predict(matrix, w, v, R):
     p = int(input("To predict enter number of years or 0 to exit: "))
     if p != 0:
-        R = int(input("Enter the number of rows: "))
-        print("Enter the entries of x0 in a single line (separated by space): ")
+        print("Enter the entries of x0 in a single line ({} values separated by spaces) : ".format(R))
         # User input of entries in a
         # single line separated by space
         entries = list(map(float, input().split()))
@@ -39,9 +37,9 @@ def predict(matrix, w, v):
         vRot = np.rot90(v)
         #matrix = np.rot90(matrix)
         # reshape v so that each vector is correct.
-        a2Matrix = np.concatenate((vRot, vector),1)
-        print(a2Matrix)
-        x = LA.solve(vRot, vector)
+        #a2Matrix = np.concatenate((vRot, vector),1)
+        #print(a2Matrix)
+        x = LA.solve(v, vector)
         #print("Solves to: ".format(x))
         #x1 = v[0]
         #x2 = v[1]
@@ -52,11 +50,11 @@ def predict(matrix, w, v):
         #for i in range(len(prediction)):
         #    s += prediction[i]
         #print("Or {} total".format(s))
-        print(x)       
+        #print(x)       
         pred = []
         s = 0
         for i in range(R):
-            print("{} * ({}^{} * {}".format(x[i][0], w[i], p, vRot[(R-1)-i]))
+            #print("{} * ({}^{} * {}".format(x[i][0], w[i], p, vRot[(R-1)-i]))
             part = x[i][0]*(pow(w[i], p) * vRot[(R-1)-i])
             pred.append(part)
             for j in range(len(part)):
@@ -64,6 +62,6 @@ def predict(matrix, w, v):
         print("In {0} years there will be the sum of {1}, or {2} total".format(p, pred, s))
 
 if __name__ == '__main__':
-    matrix = getMatrix()
+    matrix, r = getMatrix()
     w, v = getEig(matrix)
-    predict(matrix, w, v)
+    predict(matrix, w, v, r)
