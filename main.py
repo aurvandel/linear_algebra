@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 import scipy.linalg as LA
 
@@ -71,13 +73,19 @@ def predict(matrix, w, v, R):
                 s += part[j]
         print("In {0} years there will be the sum of {1}, or {2} total".format(p, pred, s))
 
+def solve(matrix, R):
+    z = np.zeros(R)
+    x = LA.solve(matrix, z)
+    print(x)
+
 def menu():
     print("Please make a selection from the menu below", "\n", 
     "[e] Get eigen values and vectors", "\n",  
     "[p] Predict using linear comb of eigen vals/vects", "\n", 
     "[m] Predict using matrix multiplication", "\n", 
+    "[s] Get the homogeneous solution", "\n",
     "[q] Quit\n")
-    validChoices = ['e', 'p', 'm', 'q']
+    validChoices = ['e', 'p', 'm', 'q', 's']
     while True:
         choice = input("Enter your choice: ")
         choice = choice.lower()
@@ -98,6 +106,8 @@ if __name__ == '__main__':
             predict(matrix, w, v, r)
         elif choice == 'm':
             multPred(matrix, r)
+        elif choice == 's':
+            solve(matrix, r)
         else:
             print("Good bye")
             break
