@@ -89,6 +89,22 @@ def raiseP(A):
     n = int(input("Enter the number to raise A to: "))
     print(np.linalg.matrix_power(A, n))
 
+def raiseMult(A, R):
+    n = int(input("Enter the number to raise A to: "))
+    x = getX0(R)
+    A = np.linalg.matrix_power(A, n)
+    result = np.matmul(A,x)
+    print(result)
+    return result
+
+def estimateDE(A, x):
+    Ax = np.matmul(A,x)
+    Ax = np.squeeze(np.array(Ax))
+    x = np.squeeze(np.array(x))
+    AxDx = np.dot(Ax, x)
+    xDx = np.dot(x, x)
+    print("Estimated eigenvalue: {}".format(AxDx/xDx))
+
 def menu():
     print("Please make a selection from the menu below", "\n", 
     "[e] Get eigen values and vectors", "\n",  
@@ -96,8 +112,10 @@ def menu():
     "[m] Predict using matrix multiplication", "\n", 
     "[s] Get the homogeneous solution", "\n",
     "[r] Raise matrix to the power of n\n",
+    "[a] Raise matrix then multiply\n",
+    "[v] Estimate the dominant eigen value\n",
     "[q] Quit\n")
-    validChoices = ['r','e', 'p', 'm', 'q', 's']
+    validChoices = ['r','e', 'p', 'm', 'q', 's', 'v', 'a']
     while True:
         choice = input("Enter your choice: ")
         choice = choice.lower()
@@ -122,6 +140,12 @@ if __name__ == '__main__':
             solve(matrix, r)
         elif choice == 'r':
             raiseP(matrix)
+        elif choice == 'a':
+            raiseMult(matrix, r)
+        elif choice == 'v':
+            x = raiseMult(matrix, r)
+            estimateDE(matrix, x)
         else:
             print("Good bye")
+
             break
