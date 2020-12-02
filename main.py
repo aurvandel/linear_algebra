@@ -20,6 +20,7 @@ def getMatrix():
 
 def getEig(matrix):
     w, v = LA.eig(matrix)
+    v = np.real_if_close(v, tol=1)
     print("Eigen Values: {} '\n' Eigen Vectors:\n {}".format(w.real, v))
     return w.real, v
 
@@ -37,7 +38,12 @@ def multPred(matrix, R):
     x = getX0(R)
     for i in range(years):
         x = np.matmul(matrix, x)
-    print("The population at {} years is {}.".format(years, x))
+
+    s = 0
+    for i in range(len(x)):
+        s += x[i]
+
+    print("The population at {} years is the sum of {} or {}.".format(years, x, s))
 
 def predict(matrix, w, v, R):
     p = int(input("To predict enter number of years or 0 to exit: "))
@@ -74,9 +80,14 @@ def predict(matrix, w, v, R):
         print("In {0} years there will be the sum of {1}, or {2} total".format(p, pred, s))
 
 def solve(matrix, R):
-    z = np.zeros(R)
-    x = LA.solve(matrix, z)
-    print(x)
+    #u, s, vh = sp.linalg.svd(matrix)
+    #nullSpace = sp.compress(s <= 1e-15, vh, axis=0)
+    #print(sp.transpose(nullSpace)
+    print(LA.null_space(matrix))
+
+def raiseP(A):
+    n = int(input("Enter the number to raise A to: "))
+    print(np.linalg.matrix_power(A, n))
 
 def menu():
     print("Please make a selection from the menu below", "\n", 
@@ -84,8 +95,9 @@ def menu():
     "[p] Predict using linear comb of eigen vals/vects", "\n", 
     "[m] Predict using matrix multiplication", "\n", 
     "[s] Get the homogeneous solution", "\n",
+    "[r] Raise matrix to the power of n\n",
     "[q] Quit\n")
-    validChoices = ['e', 'p', 'm', 'q', 's']
+    validChoices = ['r','e', 'p', 'm', 'q', 's']
     while True:
         choice = input("Enter your choice: ")
         choice = choice.lower()
@@ -108,6 +120,8 @@ if __name__ == '__main__':
             multPred(matrix, r)
         elif choice == 's':
             solve(matrix, r)
+        elif choice == 'r':
+            raiseP(matrix)
         else:
             print("Good bye")
             break
