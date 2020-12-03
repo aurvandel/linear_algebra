@@ -43,7 +43,7 @@ def multPred(matrix, R):
     for i in range(len(x)):
         s += x[i]
 
-    print("The population at {} years is the sum of {} or {}.".format(years, x, s))
+    print("The population at {} years is the sum of \n {} \n or {}.".format(years, x, s))
 
 def predict(matrix, w, v, R):
     p = int(input("To predict enter number of years or 0 to exit: "))
@@ -53,36 +53,17 @@ def predict(matrix, w, v, R):
         print("Your augmented matrix is:\n {} ".format(aMatrix))
         vector = np.flipud(vector)
         vRot = np.rot90(v)
-        #matrix = np.rot90(matrix)
-        # reshape v so that each vector is correct.
-        #a2Matrix = np.concatenate((vRot, vector),1)
-        #print(a2Matrix)
         x = LA.solve(v, vector)
-        #print("Solves to: ".format(x))
-        #x1 = v[0]
-        #x2 = v[1]
-        #print("The linear combination is: {} * ({}^{} * {}) + {}({}^{} + {}) + {}({}^{} + {}) ".format(x[0][0], w[0], p, vRot[2], x[1][0], w[1], p, vRot[1], x[2][0], w[2], p, vRot[0]))
-        #prediction = x[0][0]*(pow(w[0], p) * vRot[1]) + x[1][0]*(pow(w[1], p) * vRot[0])
-        #print("In {0} years there will be {1}".format(p, prediction))
-        #s = 0
-        #for i in range(len(prediction)):
-        #    s += prediction[i]
-        #print("Or {} total".format(s))
-        #print(x)       
         pred = []
         s = 0
         for i in range(R):
-            #print("{} * ({}^{} * {}".format(x[i][0], w[i], p, vRot[(R-1)-i]))
             part = x[i][0]*(pow(w[i], p) * vRot[(R-1)-i])
             pred.append(part)
             for j in range(len(part)):
                 s += part[j]
-        print("In {0} years there will be the sum of {1}, or {2} total".format(p, pred, s))
+        print("In {0} years there will be the sum of\n{1}\nor {2} total".format(p, pred, s))
 
 def solve(matrix, R):
-    #u, s, vh = sp.linalg.svd(matrix)
-    #nullSpace = sp.compress(s <= 1e-15, vh, axis=0)
-    #print(sp.transpose(nullSpace)
     print(LA.null_space(matrix))
 
 def raiseP(A):
@@ -96,6 +77,16 @@ def raiseMult(A, R):
     result = np.matmul(A,x)
     print(result)
     return result
+
+def divByMax(A):
+    newA = []
+    maxA = np.amax(A)
+    print("Max: {} ".format(maxA))
+    for i in A:
+        newA.append(i/maxA)
+    x = np.vstack(newA)
+    print(x)
+    return x
 
 def estimateDE(A, x):
     Ax = np.matmul(A,x)
@@ -141,9 +132,10 @@ if __name__ == '__main__':
         elif choice == 'r':
             raiseP(matrix)
         elif choice == 'a':
-            raiseMult(matrix, r)
+            x = raiseMult(matrix, r)
         elif choice == 'v':
             x = raiseMult(matrix, r)
+            x = divByMax(x)
             estimateDE(matrix, x)
         else:
             print("Good bye")

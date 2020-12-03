@@ -1,0 +1,120 @@
+Enter the number of rows\columns of a square matrix: Enter the entries in a single line (separated by space): 
+You entered:
+ [[0.2  1.2  1.1  0.9  0.1  0.   0.  ]
+ [0.7  0.   0.   0.   0.   0.   0.  ]
+ [0.   0.82 0.   0.   0.   0.   0.  ]
+ [0.   0.   0.97 0.   0.   0.   0.  ]
+ [0.   0.   0.   0.97 0.   0.   0.  ]
+ [0.   0.   0.   0.   0.9  0.   0.  ]
+ [0.   0.   0.   0.   0.   0.87 0.  ]]
+Please make a selection from the menu below 
+ [e] Get eigen values and vectors 
+ [p] Predict using linear comb of eigen vals/vects 
+ [m] Predict using matrix multiplication 
+ [s] Get the homogeneous solution 
+ [r] Raise matrix to the power of n
+ [a] Raise matrix then multiply
+ [v] Estimate the dominant eigen value
+ [q] Quit
+
+Enter your choice: Enter the number to raise A to: [[ 9.3438574  15.48478003 12.19809675  6.596903    0.67877886  0.
+   0.        ]
+ [ 4.75145201  7.98629969  6.26537026  3.41450569  0.35208793  0.
+   0.        ]
+ [ 2.88712106  4.74109491  3.76124448  2.02244376  0.20771723  0.
+   0.        ]
+ [ 2.01485712  3.42505143  2.65979697  1.47635497  0.1529887   0.
+   0.        ]
+ [ 1.48399041  2.36801903  1.87989194  0.97692125  0.09945664  0.
+   0.        ]
+ [ 0.89510979  1.65224202  1.28912852  0.72915668  0.07590754  0.
+   0.        ]
+ [ 0.66039559  0.92380914  0.78655591  0.40732645  0.04124771  0.
+   0.        ]]
+Please make a selection from the menu below 
+ [e] Get eigen values and vectors 
+ [p] Predict using linear comb of eigen vals/vects 
+ [m] Predict using matrix multiplication 
+ [s] Get the homogeneous solution 
+ [r] Raise matrix to the power of n
+ [a] Raise matrix then multiply
+ [v] Estimate the dominant eigen value
+ [q] Quit
+
+Enter your choice: Choose a valid option.
+Enter your choice: Enter the number to raise A to: [[210.3993606  350.38809809 275.69763446 149.58583909  15.40493261
+    0.           0.        ]
+ [107.8345283  179.58949537 141.30516427  76.67047731   7.89588855
+    0.           0.        ]
+ [ 64.7462861  107.82150855  84.83883278  46.03022679   4.74034423
+    0.           0.        ]
+ [ 45.98133903  76.58232816  60.25519081  32.69504626   3.36712873
+    0.           0.        ]
+ [ 32.66114863  54.38524161  42.79448775  23.21677483   2.39088773
+    0.           0.        ]
+ [ 21.51798956  35.84490837  28.20137803  15.30438192   1.57619253
+    0.           0.        ]
+ [ 13.71287497  22.82582274  17.96295161   9.74333651   1.00332454
+    0.           0.        ]]
+Please make a selection from the menu below 
+ [e] Get eigen values and vectors 
+ [p] Predict using linear comb of eigen vals/vects 
+ [m] Predict using matrix multiplication 
+ [s] Get the homogeneous solution 
+ [r] Raise matrix to the power of n
+ [a] Raise matrix then multiply
+ [v] Estimate the dominant eigen value
+ [q] Quit
+
+Enter your choice: Choose a valid option.
+Enter your choice: Enter the number to raise A to: [[4751.02116608 7912.21919132 6225.57670145 3377.86049036  347.86627414
+     0.            0.        ]
+ [2435.06391901 4055.28861779 3190.82528184 1731.27152588  178.29362489
+     0.            0.        ]
+ [1462.00772407 2434.78695539 1915.76511915 1039.45178828  107.04711295
+     0.            0.        ]
+ [1038.35699558 1729.25156176 1360.62799029  738.24687674   76.02777177
+     0.            0.        ]
+ [ 737.46938612 1228.16058355  966.35457507  524.32250087   53.99693085
+     0.            0.        ]
+ [ 485.97237766  809.32567426  636.80203903  345.51495066   35.58258855
+     0.            0.        ]
+ [ 309.56852036  515.54609213  405.64769777  220.09525934   22.66632861
+     0.            0.        ]]
+Please make a selection from the menu below 
+ [e] Get eigen values and vectors 
+ [p] Predict using linear comb of eigen vals/vects 
+ [m] Predict using matrix multiplication 
+ [s] Get the homogeneous solution 
+ [r] Raise matrix to the power of n
+ [a] Raise matrix then multiply
+ [v] Estimate the dominant eigen value
+ [q] Quit
+
+Enter your choice: Choose a valid option.
+Enter your choice: Enter the number to raise A to: [[107283.52411287 178667.02116957 140580.68875173  76275.98104366
+    7855.2212742       0.              0.        ]
+ [ 54986.54891943  91573.08156446  72052.50745778  39094.1013555
+    4026.07495162      0.              0.        ]
+ [ 33013.81460326  54980.2959904   43260.18214505  23472.02067194
+    2417.24739028      0.              0.        ]
+ [ 23447.29968569  39048.48604004  30724.54571691  16670.460852
+    1716.79415945      0.              0.        ]
+ [ 16652.90334666  27733.28575112  21821.39932055  11839.80996297
+    1219.31341696      0.              0.        ]
+ [ 10973.82075262  18275.49837352  14379.72228399   7802.12016558
+     803.49514362      0.              0.        ]
+ [  6990.40774953  11641.63214982   9159.99303113   4970.01016761
+     511.83254586      0.              0.        ]]
+Please make a selection from the menu below 
+ [e] Get eigen values and vectors 
+ [p] Predict using linear comb of eigen vals/vects 
+ [m] Predict using matrix multiplication 
+ [s] Get the homogeneous solution 
+ [r] Raise matrix to the power of n
+ [a] Raise matrix then multiply
+ [v] Estimate the dominant eigen value
+ [q] Quit
+
+Enter your choice: Choose a valid option.
+Enter your choice: Good bye
