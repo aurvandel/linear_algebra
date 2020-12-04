@@ -117,6 +117,7 @@ def menu():
 
 
 if __name__ == '__main__':
+    np.set_printoptions(suppress=True, formatter={'float_kind':'{:.3f}'.format})
     matrix, r = getMatrix()
     while True:
         choice = menu()
